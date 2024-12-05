@@ -1,8 +1,8 @@
-from ursina import *
-from gameobjects import *
+from pygame import 
+from gameobjects import 
 
 
-class Game(Ursina):
+class Game(pygame):
     def __init__(self):
         super().__init__()
         window.color = color.black
