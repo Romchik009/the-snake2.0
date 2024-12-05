@@ -1,4 +1,4 @@
-from ursina import *
+from pygame import 
 from random import randrange
 
 
