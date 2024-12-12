@@ -1,5 +1,5 @@
 # Snake3D
-Snake3D in Python using UrsinaEngine [3D Engine]
+Snake3D in Python using pygame [3D Engine]
 
 Game controls - WASD
 Change view 2D, 3D - keys 2 and 3
