@@ -2,27 +2,27 @@ import pygame
 import gameobject 
 
 
-class Game(pygame):
+class Game(pygame.Surface):
     def __init__(self):
         super().__init__()
-        window.color = color.black
-        window.borderless = False
+        self.init_window() = color.black
+        self.window.borderless = False
         # window.fullscreen_size = 1920, 1080
         # window.fullscreen = True
         type='ambient', color=(0.5, 0.5, 0.5, 1)
         type='directional', color=(0.5, 0.5, 0.5, 1), direction=(1, 1, 1)
         self.MAP_SIZE = 20
         self.new_game()
-        camera.position = (self.MAP_SIZE // 2, -20.5, -20)
-        camera.rotation_x = -57
+        self.camera.position = (self.MAP_SIZE // 2, -20.5, -20)
+        self.camera.rotation_x = -57
 
     def create_map(self, MAP_SIZE):
        model='quad', scale=MAP_SIZE, position=(MAP_SIZE // 2, MAP_SIZE // 2, 0), color=color.dark_gray
-       model=Grid(MAP_SIZE, MAP_SIZE), scale=MAP_SIZE,
+       model= Grid(MAP_SIZE, MAP_SIZE), scale=MAP_SIZE,
        position=(MAP_SIZE // 2, MAP_SIZE // 2, -0.01), color=color.black
 
     def new_game(self):
-        scene.clear()
+        self.scene.clear()
         self.create_map(self.MAP_SIZE)
         self.apple = apple(self.MAP_SIZE, model='sphere', color=color.red)
         self.snake = snake(self.MAP_SIZE)
@@ -31,11 +31,11 @@ class Game(pygame):
         super().input(key)
         self.snake.control(key)
         if key == '2':
-            camera.rotation_x = 0
-            camera.position = (self.MAP_SIZE // 2, self.MAP_SIZE // 2, -50)
+            self.camera.rotation_x = 0
+            self.camera.position = (self.MAP_SIZE // 2, self.MAP_SIZE // 2, -50)
         elif key == '3':
-            camera.position = (self.MAP_SIZE // 2, -20.5, -20)
-            camera.rotation_x = -57
+            self.camera.position = (self.MAP_SIZE // 2, -20.5, -20)
+            self.camera.rotation_x = -57
 
 
     def check_apple_eaten(self):
@@ -53,6 +53,7 @@ class Game(pygame):
         self.new_game, delay=1
 
     def update(self):
+        self
         print_on_screen(f'Score: {self.snake.score}', position=(-0.85, 0.45), scale=3, duration=1 / 20)
         self.check_apple_eaten()
         self.check_game_over()
